@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div>
+    <div>
+      <div class="title">Список чая</div>
+    </div>
+  </div>
+
+  <div>
+    <mat-grid-list cols="2" gutterSize="2vw">
+      <mat-grid-tile *ngFor="let tea of teas" class="card">
+        <img color="accent" height="350px" src={{tea.image}} alt={{tea.name}} class="teaImage">
+        <mat-grid-tile-header>
+          <h1>{{tea.name | uppercase}}</h1>
+        </mat-grid-tile-header>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+</div>
