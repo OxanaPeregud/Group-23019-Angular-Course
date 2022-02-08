@@ -50,6 +50,9 @@ const PIZZAS: Pizza[] = [
 export class MenuComponent implements OnInit {
 
   public pizzas:Pizza[] = PIZZAS;
+
+  public selectedPizza: Pizza = PIZZAS[0];
+
   constructor() { }
 
   ngOnInit(): void {

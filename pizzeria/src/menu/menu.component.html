@@ -16,4 +16,22 @@
       </mat-grid-tile>
     </mat-grid-list>
   </mat-list>
+<div fxFlex *ngIf="selectedPizza">
+  <mat-card class = "card-container">
+    <mat-card-header>
+      <mat-card-title>
+        <h3>{{selectedPizza.name | uppercase}}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src={{selectedPizza.image}} alt ={{selectedPizza.name}}>
+    <mat-card-content>
+      <p>{{selectedPizza.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
+</div>
+
