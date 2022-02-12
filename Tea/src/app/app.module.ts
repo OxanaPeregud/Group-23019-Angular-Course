@@ -9,24 +9,37 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { TeaListComponent } from './tea-list/tea-list.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { TeaInfoComponent } from './tea-info/tea-info.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatListModule} from "@angular/material/list";
+
+import '@angular/common/locales/global/ru';
+import {MatButtonModule} from "@angular/material/button";
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    TeaListComponent
-  ],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        TeaListComponent,
+        TeaInfoComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    exports: [
+        HeaderComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
