@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div>
+    <div>
+      <div class="title">Список чая</div>
+    </div>
+  </div>
+
+  <div>
+    <mat-grid-list cols="4" gutterSize="2vw">
+      <mat-grid-tile *ngFor="let tea of teas" class="card" (click)= onSelect(tea)>
+        <img color="accent" src={{tea.image}} alt={{tea.name}} class="teaImage">
+        <mat-grid-tile-header>
+          <h1>{{tea.name | uppercase}}</h1>
+        </mat-grid-tile-header>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <app-tea-info [tea]="selectedTea"></app-tea-info>
+
+</div>
