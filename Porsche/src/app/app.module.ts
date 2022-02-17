@@ -12,12 +12,16 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import { PorscheDetailComponent } from './porsche-detail/porsche-detail.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    PorscheDetailComponent
+    PorscheDetailComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
