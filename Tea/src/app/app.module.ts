@@ -16,6 +16,8 @@ import {MatListModule} from "@angular/material/list";
 import '@angular/common/locales/global/ru';
 import {MatButtonModule} from "@angular/material/button";
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -25,7 +27,9 @@ import { FooterComponent } from './footer/footer.component';
         HeaderComponent,
         TeaListComponent,
         TeaInfoComponent,
-        FooterComponent
+        FooterComponent,
+        HomeComponent,
+        ContactComponent
     ],
   imports: [
     BrowserModule,
