@@ -1,0 +1,33 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>Меню</h3>
+      <hr>
+    </div>
+  </div>
+
+<!--  <mat-list fxFlex>-->
+<!--    <mat-list-item *ngFor="let porsche of porsches">-->
+<!--      <img matListAvatar src={{porsche.image}} alt={{porsche.name}}>-->
+<!--      <h1 matLine>{{porsche.name}}</h1>-->
+<!--      <p matLine>-->
+<!--        <span>{{porsche.description}}</span>-->
+<!--      </p>-->
+<!--    </mat-list-item>-->
+<!--  </mat-list>-->
+
+  <div fxFlex>
+    <mat-grid-list cols="3" rowHeight="3:2">
+      <mat-grid-tile *ngFor="let porsche of porsches" [routerLink]="['/porsche-detail', porsche.id]">
+        <img class="image" src={{porsche.image}} alt={{porsche.name}}>
+        <mat-grid-tile-footer>
+          <h1>{{porsche.name | uppercase}}</h1>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+<!--  <app-porsche-detail [porsche]="selectedPorsche"></app-porsche-detail>-->
+</div>

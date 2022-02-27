@@ -1,0 +1,49 @@
+<div class="container"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.gt-md="space-around center"
+     fxLayoutGap="50px"
+     fxLayoutGap.xs="0"
+>
+  <div fxFlex="45">
+    <mat-card *ngIf="porsche">
+      <mat-card-header>
+        <mat-card-title>
+          <h3>{{porsche.name | uppercase}}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src={{porsche.image}} alt={{porsche.name}}>
+      <mat-card-content>
+        <p>{{porsche.description}}</p>
+        <p>Engine: {{porsche.engine}}</p>
+        <p>Color: {{porsche.color}}</p>
+        <p>Price: от {{porsche.price}}$</p>
+        <p>Year of release: {{porsche.yearofrelease}}</p>
+<!--        <p>{{porsche.сarbody}}</p>-->
+        <p>Body: {{porsche.body}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="goBack()">BACK</button>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div fxFlex="70" >
+    <mat-list *ngIf="porsche">
+      <h3>Отзывы</h3>
+      <mat-list-item *ngFor="let comment of porsche.comments">
+        <h4 matLine>"{{comment.comment}}"</h4>
+        <p matLine>
+          <span>{{comment.rating}}&#9733;</span>
+        </p>
+        <p matLine>
+          <span>--{{comment.author}},{{comment.date | date: 'longDate':'+0300':'ru'}}</span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+</div>
