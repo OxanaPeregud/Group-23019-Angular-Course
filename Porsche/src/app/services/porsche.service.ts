@@ -13,4 +13,12 @@ export class PorscheService {
     return PORSCHES;
   }
 
+  public getFeaturedPorsches():Porsche[]{
+    return PORSCHES.filter(porsche => porsche.featured);
+  }
+
+  public getPorsche(id:string):Porsche{
+    return PORSCHES.filter(porsche=>porsche.id === id)[0]
+  }
+
 }

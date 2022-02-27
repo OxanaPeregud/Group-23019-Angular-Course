@@ -3,6 +3,7 @@ import {HomeComponent} from "../home/home.component";
 import {AboutComponent} from "../about/about.component";
 import {MenuComponent} from "../menu/menu.component";
 import {ContactComponent} from "../contact/contact.component";
+import {PorscheDetailComponent} from "../porsche-detail/porsche-detail.component";
 
 export const routes: Routes = [
   // {
@@ -42,6 +43,10 @@ export const routes: Routes = [
   {
     path:'menu',
     component: MenuComponent
+  },
+  {
+    path:'porsche-detail/:id',
+    component: PorscheDetailComponent
   },
   {
     path:'contact',
