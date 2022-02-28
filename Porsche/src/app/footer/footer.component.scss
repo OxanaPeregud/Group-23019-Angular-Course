@@ -1,0 +1,41 @@
+$it-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-bright-grey: #eff0f1;
+$background-black-grey: #191f22;
+
+@mixin zero-margin($pad-up-down, $pad-left-right){
+  margin: 0 auto;
+  padding:$pad-up-down $pad-left-right ;
+}
+.footer{
+  background-color: $background-bright-grey;
+  @include zero-margin(20px, 0px)
+}
+
+.btn-facebook{
+  color: #fff !important;
+  background-color: $background-black-grey !important;
+}
+
+.btn-instagram{
+  color: #fff !important;
+  background-color: $background-black-grey!important;
+}
+.btn-youtube{
+  color: #fff !important;
+  background-color: $background-black-grey!important;
+}
+.btn-linkedin{
+  color: #fff !important;
+  background-color: $background-black-grey!important;
+}
+.btn-vk{
+  color: #fff !important;
+  background-color: $background-black-grey!important;
+}
+.btn-mail{
+  color: #fff !important;
+  background-color: $background-black-grey!important;
+}
+

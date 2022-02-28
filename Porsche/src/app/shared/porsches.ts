@@ -5,7 +5,7 @@ export const PORSCHES:Porsche[]=[
         id: '0',
         name: '718',
         image:'/assets/images/718@2xx.jpeg',
-        featured: true,
+        featured: false,
         label: 'New',
         price: '70.000',
         yearofrelease: '2019',
@@ -72,7 +72,7 @@ export const PORSCHES:Porsche[]=[
     body:'coupe',
     color:'silver',
     engine:'petrol',
-    description: '911 Carrera 4 Cabriolet 2012',
+    description: '911 Carrera ',
     comments:[
       {
         rating: 5,
