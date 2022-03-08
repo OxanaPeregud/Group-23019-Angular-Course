@@ -18,6 +18,15 @@ import {PorscheService} from "./services/porsche.service";
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSelectModule} from "@angular/material/select";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -28,7 +37,8 @@ import { ContactComponent } from './contact/contact.component';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +49,16 @@ import { ContactComponent } from './contact/contact.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     PorscheService

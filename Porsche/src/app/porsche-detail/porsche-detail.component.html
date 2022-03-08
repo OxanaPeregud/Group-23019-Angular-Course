@@ -6,8 +6,8 @@
      fxLayoutGap="50px"
      fxLayoutGap.xs="0"
 >
-  <div fxFlex="45">
-    <mat-card *ngIf="porsche">
+  <div fxFlex="45" *ngIf="porsche">
+    <mat-card >
       <mat-card-header>
         <mat-card-title>
           <h3>{{porsche.name | uppercase}}</h3>
@@ -24,15 +24,25 @@
         <p>Body: {{porsche.body}}</p>
       </mat-card-content>
       <mat-card-actions>
+
+        <button mat-button [routerLink]="['/porsche-detail', previousPorscheId]">
+          <span class="fa fa-angle-double-left fa-3x"></span>
+        </button>
+
         <button mat-button (click)="goBack()">BACK</button>
         <button mat-button>LIKE</button>
         <button mat-button>SHARE</button>
+
+        <span class="flex-spacer"></span>
+        <button mat-button [routerLink]="['/porsche-detail', nextPorscheId]">
+          <span class="fa fa-angle-double-right fa-3x"></span>
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
 
-  <div fxFlex="70" >
-    <mat-list *ngIf="porsche">
+  <div fxFlex="70" *ngIf="porsche" >
+    <mat-list >
       <h3>Отзывы</h3>
       <mat-list-item *ngFor="let comment of porsche.comments">
         <h4 matLine>"{{comment.comment}}"</h4>

@@ -48,8 +48,8 @@ export const PORSCHES:Porsche[]=[
     description: 'Taycan',
     comments:[
       {
-        rating: 2,
-        comment: 'Мало мощности и дизайн старый',
+        rating: 5,
+        comment: 'Нужно это почувствовать',
         author: 'Алекс',
         date: '2021-11-10'
       },
