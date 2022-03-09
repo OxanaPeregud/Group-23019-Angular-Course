@@ -19,7 +19,7 @@
 <!--    </mat-list-item>-->
 <!--  </mat-list>-->
 
-  <div fxFlex>
+  <div fxFlex *ngIf="porsches">
     <mat-grid-list cols="3" rowHeight="3:2">
       <mat-grid-tile *ngFor="let porsche of porsches" [routerLink]="['/porsche-detail', porsche.id]">
         <img class="image" src={{porsche.image}} alt={{porsche.name}}>
@@ -28,6 +28,11 @@
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
+  </div>
+
+  <div class="spinner-center" [hidden]="porsches">
+    <mat-spinner></mat-spinner>
+    <h4>Загружается...Пожалуйста, подождите!</h4>
   </div>
 <!--  <app-porsche-detail [porsche]="selectedPorsche"></app-porsche-detail>-->
 </div>

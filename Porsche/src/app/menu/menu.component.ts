@@ -17,7 +17,8 @@ export class MenuComponent implements OnInit {
   constructor(private porscheService: PorscheService) { }
 
   ngOnInit(): void {
-    this.porsches = this.porscheService.getPorsches();
+    this.porscheService.getPorschesWithDelay()
+      .subscribe(porsches => this.porsches = porsches)
   }
 
   public onSelect(porsche: Porsche):void{
