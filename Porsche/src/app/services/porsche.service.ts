@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Porsche} from "../shared/porsche";
 import {PORSCHES} from "../shared/porsches";
 import {delay, Observable, of} from "rxjs";
+import {FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,25 @@ export class PorscheService {
 
   public getPorschesIds():Observable<string[]>{
     return of(PORSCHES.map(porsche=>porsche.id))
+  }
+
+  public onFormValueChanged(formGroup: FormGroup, formErrors: any, validationMessages:any, data?:any ){
+    if (!formGroup){
+      return;
+    }
+    for (const field in formErrors){
+      if (formErrors.hasOwnProperty(field)){
+        formErrors[field] = '';
+        const control = formGroup.get(field);
+        if (control && control.dirty && !control.valid){
+          const messages = validationMessages[field]
+          for (const key in control.errors){
+            if (control.errors.hasOwnProperty(key)){
+              formErrors[field]+=messages[key]+''
+            }
+          }
+        }
+      }
+    }
   }
 }
