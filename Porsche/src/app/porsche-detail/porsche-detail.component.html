@@ -54,6 +54,49 @@
         </p>
       </mat-list-item>
     </mat-list>
+
+    <div fxFlex fxFlexOffset="10" class="form-size">
+      <br>
+      <h4>Оставьте свой отзыв о пицце</h4>
+      <form  novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field class="full-width">
+            <input matInput formControlName="author" placeholder="Имя" type="text">
+            <mat-error *ngIf="commentFormErrors.author">
+              {{commentFormErrors.author}}
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-slider class="half-width"
+                      formControlName="rating"
+                      thumbLabel
+                      step="1"
+                      min="0"
+                      max="5"
+                      color="primary"
+          >
+
+          </mat-slider>
+
+          <mat-error style="font-size: small" *ngIf="commentFormErrors.rating">
+            {{commentFormErrors.rating}}
+          </mat-error>
+        </p>
+        <p>
+          <mat-form-field class="full-width">
+            <textarea matInput formControlName="comment" placeholder="Ваш отзыв" rows="5"></textarea>
+            <mat-error *ngIf="commentFormErrors.comment">
+              {{commentFormErrors.comment}}
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+
+        <button type="submit" mat-button
+                [disabled]="commentForm.invalid">Отправить</button>
+      </form>
+    </div>
   </div>
 
 </div>
