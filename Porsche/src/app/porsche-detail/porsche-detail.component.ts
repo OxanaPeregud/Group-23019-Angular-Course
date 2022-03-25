@@ -1,4 +1,4 @@
-import { Component,Input, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Porsche} from "../shared/porsche";
 import {PorscheService} from "../services/porsche.service";
 import {ActivatedRoute, Params} from "@angular/router";
@@ -6,6 +6,7 @@ import {Location} from "@angular/common";
 import {switchMap} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Comment} from "../shared/comment";
+import {HttpService} from "../services/http.service";
 
 @Component({
   selector: 'app-porsche-detail',
@@ -21,13 +22,13 @@ export class PorscheDetailComponent implements OnInit {
   public commentForm!:FormGroup;
   public comment!:Comment;
 
-  public commentFormErrors: any ={
+  public commentFormErrors: any = {
     'rating':'',
     'comment':'',
     'author':''
   }
 
-  private commentValidationMessages: any={
+  private commentValidationMessages: any = {
     'rating':{
       'min':'Рейтинг должен быть от 1 до 5',
     },
@@ -41,10 +42,12 @@ export class PorscheDetailComponent implements OnInit {
     }
   };
 
-  constructor(private porscheService:PorscheService,
+  constructor(@Inject('BaseURL')public BaseURL: string,
+              private porscheService:PorscheService,
               private route: ActivatedRoute,
               private location: Location,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private httpService:HttpService) {
     this.createCommentForm();
   }
 
@@ -63,6 +66,7 @@ export class PorscheDetailComponent implements OnInit {
   public onSubmit():void{
     this.comment = this.commentForm.value;
     this.porsche.comments.push(this.comment);
+    this.httpService.update(this.porsche, this.porscheService.porschesLink+"/"+this.porsche.id)
     this.resetCommentForm();
   }
 
@@ -75,7 +79,12 @@ export class PorscheDetailComponent implements OnInit {
     });
   }
 
-
+  private setPreviousAndNextPorsche(porscheId: string): void {
+    const index: number = this.porschesIds?.indexOf(porscheId);
+    this.previousPorscheId = this.porschesIds[(this.porschesIds.length + index - 1) % this.porschesIds.length];
+    this.nextPorscheId = this.porschesIds[(this.porschesIds.length + index + 1) % this.porschesIds.length];
+    this.resetCommentForm();
+  }
 
   ngOnInit(): void {
     this.getPorscheDetails();
@@ -93,12 +102,7 @@ export class PorscheDetailComponent implements OnInit {
   public goBack():void{
     this.location.back()
   }
-  private setPreviousAndNextPorsche(porscheId: string): void {
-    const index: number = this.porschesIds?.indexOf(porscheId);
-    this.previousPorscheId = this.porschesIds[(this.porschesIds.length + index - 1) % this.porschesIds.length];
-    this.nextPorscheId = this.porschesIds[(this.porschesIds.length + index + 1) % this.porschesIds.length];
-    this.resetCommentForm();
-  }
+
 
 
 }

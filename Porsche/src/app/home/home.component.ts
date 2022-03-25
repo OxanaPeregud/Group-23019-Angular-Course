@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, Injectable, OnInit} from '@angular/core';
 import {Porsche} from "../shared/porsche";
 import {PorscheService} from "../services/porsche.service";
 
@@ -14,21 +14,29 @@ export class HomeComponent implements OnInit {
   private porsches!:Porsche[];
   private featuredPorsches!:Porsche[];
 
-  constructor(private porscheService: PorscheService) {
+  constructor(@Inject('BaseURL') public BaseURL: string,
+              private porscheService: PorscheService) {
   }
 
   ngOnInit(): void {
-    this.setPromotionPorsches().then(()=>{
-      this.displayFeaturedPorsches()
-    })
+    this.setPromotionPorsches();
   }
 
-  private async setPromotionPorsches(){
-    this.porscheService.getPorsches()
-      .subscribe(porsches => this.porsches = porsches)
+  private setFeaturedPorsches(): void{
     this.porscheService.getFeaturedPorsches()
-      .subscribe(featuredPorsches => this.featuredPorsches =featuredPorsches)
+      .subscribe(featuredPorsches=>{
+        this.featuredPorsches = featuredPorsches;
+        this.displayFeaturedPorsches()
+      })
   }
+
+  private setPromotionPorsches(){
+    this.porscheService.getPorsches()
+      .subscribe(porsches => {
+        this.porsches = porsches
+        this.setFeaturedPorsches()
+      })
+ }
 
   private displayFeaturedPorsches():void{
     if (this.featuredPorsches.length >=2){
@@ -42,4 +50,7 @@ export class HomeComponent implements OnInit {
       this.secondPromotion = this.porsches[1];
     }
   }
+
+
+
 }
