@@ -11,6 +11,7 @@ import {HttpService} from "../services/http.service";
 })
 export class ContactComponent implements OnInit {
 
+
   public feedbackForm!: FormGroup;
   public contactType = ContactType;
   private feedback!: Feedback;
