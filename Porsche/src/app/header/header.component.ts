@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginComponent} from "../login/login.component";
 
@@ -9,7 +9,8 @@ import {LoginComponent} from "../login/login.component";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(@Inject('BaseURL')public BaeURL:string,
+              private dialog: MatDialog) { }
 
   public openLoginForm():void{
     this.dialog.open(LoginComponent,{

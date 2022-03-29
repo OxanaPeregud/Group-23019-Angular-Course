@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ContactType, Feedback} from "../shared/feedback";
 import {PorscheService} from "../services/porsche.service";
+import {HttpService} from "../services/http.service";
 
 @Component({
   selector: 'app-contact',
@@ -9,6 +10,7 @@ import {PorscheService} from "../services/porsche.service";
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
+
 
   public feedbackForm!: FormGroup;
   public contactType = ContactType;
@@ -44,15 +46,17 @@ export class ContactComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-              private porscheService: PorscheService
-  ) {
+              private porscheService: PorscheService,
+              private httpService: HttpService) {
     this.createForm();
   }
+
   ngOnInit(): void {
   }
 
   public onSubmit() {
     this.feedback = this.feedbackForm.value;
+    this.httpService.save(this.feedback, this.porscheService.feedbackLink)
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',

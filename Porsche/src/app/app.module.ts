@@ -28,6 +28,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSelectModule} from "@angular/material/select";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSliderModule} from "@angular/material/slider";
+import {HttpClientModule} from "@angular/common/http";
+import {baseURL} from "./shared/baseurl";
+import {HttpService} from "./services/http.service";
 
 @NgModule({
   declarations: [
@@ -60,10 +63,16 @@ import {MatSliderModule} from "@angular/material/slider";
         MatSlideToggleModule,
         MatSelectModule,
         MatProgressSpinnerModule,
-        MatSliderModule
+        MatSliderModule,
+        HttpClientModule
     ],
   providers: [
-    PorscheService
+    PorscheService,
+    {
+      provide: 'BaseURL',
+      useValue: baseURL
+    },
+    HttpService
   ],
   bootstrap: [AppComponent]
 })
