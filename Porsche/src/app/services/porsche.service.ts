@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Porsche} from "../shared/porsche";
-import {PORSCHES} from "../shared/porsches";
-import {delay, map, Observable, of} from "rxjs";
+import {delay, map, Observable, of, pipe} from "rxjs";
 import {FormGroup} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {baseURL} from "../shared/baseurl";
+import {MatDialog} from "@angular/material/dialog";
+import {PopupComponent} from "../popup/popup.component";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class PorscheService {
 
   public porschesLink: string="porsches";
   public feedbackLink: string="feedback";
+  public orderedPorsches: Porsche[]=[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private dialog: MatDialog) { }
 
   public getPorsches():Observable<Porsche[]>{
     return this.http.get<Porsche[]>(baseURL + this.porschesLink)
@@ -25,11 +28,22 @@ export class PorscheService {
   }
 
   public getPorsche(id:string):Observable<Porsche>{
-    return this.http.get<Porsche>(baseURL + this.porschesLink +"/" + id);
+    return this.http.get<Porsche>(baseURL + this.porschesLink +"/" + id)
+    .pipe(
+      delay(500)
+    );
   }
 
   public getPorschesIds(): Observable<string[]>{
     return this.getPorsches().pipe(map(porsches => porsches.map(porsche => porsche.id)));
+  }
+
+  public openMessagePopup(message: string):void{
+    this.dialog.open(PopupComponent,{
+      width:'500px',
+      height:'110px',
+      data: message
+    });
   }
 
   public getPorschesWithDelay():Observable<Porsche[]>{

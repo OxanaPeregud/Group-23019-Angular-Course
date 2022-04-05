@@ -3,14 +3,17 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ContactType, Feedback} from "../shared/feedback";
 import {PorscheService} from "../services/porsche.service";
 import {HttpService} from "../services/http.service";
+import {expand} from "../animations/app.animations";
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  animations:[
+    expand()
+  ]
 })
 export class ContactComponent implements OnInit {
-
 
   public feedbackForm!: FormGroup;
   public contactType = ContactType;

@@ -21,18 +21,18 @@
 
   <div fxFlex *ngIf="porsches">
     <mat-grid-list cols="3" rowHeight="3:2">
-      <mat-grid-tile *ngFor="let porsche of porsches" [routerLink]="['/porsche-detail', porsche.id]">
+      <mat-grid-tile *ngFor="let porsche of porsches" [routerLink]="['/porsche-detail', porsche.id]" appHighlight>
         <img class="image" src="{{BaseURL+porsche.image}}" alt={{porsche.name}}>
-        <mat-grid-tile-footer>
+        <mat-grid-tile-header>
           <h1>{{porsche.name | uppercase}}</h1>
+        </mat-grid-tile-header>
+        <mat-grid-tile-footer>
+          <h1>{{porsche.price | uppercase}}</h1>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
 
-  <div class="spinner-center" [hidden]="porsches">
-    <mat-spinner></mat-spinner>
-    <h4>Загружается...Пожалуйста, подождите!</h4>
-  </div>
+  <app-spinner [hiddenData]="porsches"></app-spinner>
 <!--  <app-porsche-detail [porsche]="selectedPorsche"></app-porsche-detail>-->
 </div>

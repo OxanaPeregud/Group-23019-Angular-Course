@@ -31,6 +31,14 @@ import {MatSliderModule} from "@angular/material/slider";
 import {HttpClientModule} from "@angular/common/http";
 import {baseURL} from "./shared/baseurl";
 import {HttpService} from "./services/http.service";
+import { PopupComponent } from './popup/popup.component';
+import { OrderComponent } from './order/order.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatIconModule} from "@angular/material/icon";
+import {MatBadgeModule} from "@angular/material/badge";
+import { HighlightDirective } from './directives/highlight.directive';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -42,30 +50,38 @@ import {HttpService} from "./services/http.service";
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    PopupComponent,
+    OrderComponent,
+    HighlightDirective,
+    SpinnerComponent,
+    ToolbarComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        FlexLayoutModule,
-        MatListModule,
-        MatGridListModule,
-        MatCardModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        MatCheckboxModule,
-        ReactiveFormsModule,
-        MatSlideToggleModule,
-        MatSelectModule,
-        MatProgressSpinnerModule,
-        MatSliderModule,
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatProgressSpinnerModule,
+    MatSliderModule,
+    HttpClientModule,
+    MatTableModule,
+    MatIconModule,
+    MatBadgeModule
+  ],
   providers: [
     PorscheService,
     {

@@ -7,11 +7,15 @@ import {switchMap} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Comment} from "../shared/comment";
 import {HttpService} from "../services/http.service";
+import {visibility} from "../animations/app.animations";
 
 @Component({
   selector: 'app-porsche-detail',
   templateUrl: './porsche-detail.component.html',
-  styleUrls: ['./porsche-detail.component.scss']
+  styleUrls: ['./porsche-detail.component.scss'],
+  animations:[
+    visibility()
+  ],
 })
 export class PorscheDetailComponent implements OnInit {
 
@@ -21,6 +25,7 @@ export class PorscheDetailComponent implements OnInit {
   public nextPorscheId!:string;
   public commentForm!:FormGroup;
   public comment!:Comment;
+  public visibility = 'shown';
 
   public commentFormErrors: any = {
     'rating':'',
@@ -63,6 +68,16 @@ export class PorscheDetailComponent implements OnInit {
       this.porscheService.onFormValueChanged(this.commentForm, this.commentFormErrors, this.commentValidationMessages, data))
   }
 
+  public addToOrder():void{
+    this.openOrderPopup();
+    this.porscheService.orderedPorsches.push(this.porsche)
+  }
+
+  public openOrderPopup():void{
+    this.porscheService.openMessagePopup("Порш добавлен в корзину")
+  }
+
+
   public onSubmit():void{
     this.comment = this.commentForm.value;
     this.porsche.comments.push(this.comment);
@@ -92,8 +107,12 @@ export class PorscheDetailComponent implements OnInit {
   private getPorscheDetails(): void {
     this.porscheService.getPorschesIds()
       .subscribe((porschesIds) => this.porschesIds = porschesIds);
-    this.route.params.pipe(switchMap((params: Params) => this.porscheService.getPorsche(params['id'])))
+    this.route.params.pipe(switchMap((params: Params) => {
+      this.visibility = 'hidden';
+      return this.porscheService.getPorsche(params['id'])
+    }))
       .subscribe(porsche => {
+        this.visibility = 'shown'
         this.porsche = porsche;
         this.setPreviousAndNextPorsche(porsche.id);
       });
