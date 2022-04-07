@@ -2,11 +2,19 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Porsche} from "../shared/porsche";
 import {PORSCHES} from "../shared/porsches";
 import {PorscheService} from "../services/porsche.service";
+import {flyIn} from "../animations/app.animations";
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+  host:{
+    '[@flyIn]':'true',
+    'style':'display:block;'
+  },
+  animations:[
+    flyIn()
+  ]
 })
 export class MenuComponent implements OnInit {
 
@@ -18,7 +26,7 @@ export class MenuComponent implements OnInit {
               private porscheService: PorscheService) { }
 
   ngOnInit(): void {
-    this.porscheService.getPorschesWithDelay()
+    this.porscheService.getPorsches()
       .subscribe(porsches => this.porsches = porsches)
   }
 

@@ -57,7 +57,7 @@ body{
 .text-floral-white{
   color: floralwhite !important;
 }
-.flex-spacer{
+.flex-spacer {
   flex: 1 1 auto;
 }
 .active{
@@ -73,4 +73,13 @@ body{
 .form-size {
   width: 75%;
 }
+
+.highlight{
+  border: 3px solid white;
+  z-index: 2;
+  transform: scale(1.02);
+  transition: 0.4s;
+}
+
+
 

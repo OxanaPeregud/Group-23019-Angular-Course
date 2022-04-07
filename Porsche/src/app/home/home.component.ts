@@ -1,11 +1,19 @@
 import {Component, Inject, Injectable, OnInit} from '@angular/core';
 import {Porsche} from "../shared/porsche";
 import {PorscheService} from "../services/porsche.service";
+import {flyIn} from "../animations/app.animations";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  host:{
+    '[@flyIn]':'true',
+    'style':'display:block;'
+  },
+  animations:[
+    flyIn()
+  ]
 })
 export class HomeComponent implements OnInit {
 

@@ -6,7 +6,7 @@
      fxLayoutGap="50px"
      fxLayoutGap.xs="0"
 >
-  <div fxFlex="45" *ngIf="porsche">
+  <div fxFlex="35" *ngIf="porsche" [@visibility]="visibility">
     <mat-card >
       <mat-card-header>
         <mat-card-title>
@@ -29,9 +29,8 @@
           <span class="fa fa-angle-double-left fa-3x"></span>
         </button>
 
-        <button mat-button (click)="goBack()">BACK</button>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <button mat-button routerLink="/menu">МЕНЮ</button>
+        <button mat-button (click)="addToOrder()">ДОБАВИТЬ В КОРЗИНУ</button>
 
         <span class="flex-spacer"></span>
         <button mat-button [routerLink]="['/porsche-detail', nextPorscheId]">
@@ -40,6 +39,8 @@
       </mat-card-actions>
     </mat-card>
   </div>
+
+<app-spinner [hiddenData]="porsche"></app-spinner>
 
 
   <div fxFlex="70" *ngIf="porsche">
