@@ -30,6 +30,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSliderModule} from "@angular/material/slider";
 import {HttpClientModule} from "@angular/common/http";
 import {baseURL} from "./shared/baseurl";
+import '@angular/common/locales/global/ru';
 import {HttpService} from "./services/http.service";
 import { PopupComponent } from './popup/popup.component';
 import { OrderComponent } from './order/order.component';
@@ -39,6 +40,9 @@ import {MatBadgeModule} from "@angular/material/badge";
 import { HighlightDirective } from './directives/highlight.directive';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { PlaceOrderComponent } from './place-order/place-order.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -55,7 +59,9 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     OrderComponent,
     HighlightDirective,
     SpinnerComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    SignUpComponent,
+    PlaceOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +86,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     HttpClientModule,
     MatTableModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTabsModule
   ],
   providers: [
     PorscheService,

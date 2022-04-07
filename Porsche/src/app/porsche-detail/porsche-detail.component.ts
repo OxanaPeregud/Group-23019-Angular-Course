@@ -15,7 +15,7 @@ import {visibility} from "../animations/app.animations";
   styleUrls: ['./porsche-detail.component.scss'],
   animations:[
     visibility()
-  ],
+  ]
 })
 export class PorscheDetailComponent implements OnInit {
 
@@ -74,7 +74,7 @@ export class PorscheDetailComponent implements OnInit {
   }
 
   public openOrderPopup():void{
-    this.porscheService.openMessagePopup("Порш добавлен в корзину")
+    this.porscheService.openMessagePopup("Porsche добавлен в корзину")
   }
 
 
@@ -121,7 +121,5 @@ export class PorscheDetailComponent implements OnInit {
   public goBack():void{
     this.location.back()
   }
-
-
 
 }

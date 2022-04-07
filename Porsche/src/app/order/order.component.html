@@ -51,3 +51,29 @@
 
 </table>
 
+
+<mat-card *ngIf="porscheService.isUserSubmitted">
+  <h3>Логин:</h3>
+  <p>{{porscheService.user.username}}</p>
+  <h3>Телефон:</h3>
+  <p>{{porscheService.user.telNumber}}</p>
+  <h3>Электронная почта:</h3>
+  <p>{{porscheService.user.email}}</p>
+  <h3>Адрес доставки:</h3>
+  <p>{{porscheService.user.street}},{{porscheService.user.house}}-{{porscheService.user.apartment}}</p>
+</mat-card>
+
+<mat-dialog-actions>
+  <span class="flex-spacer"></span>
+  <button mat-button *ngIf="!porscheService.isUserSubmitted"
+          style="background: #191f22; color: white"
+          (click)="openLoginForm()"
+          [disabled]="totalSum=='0.000'">
+    Оформить заказ
+  </button>
+  <button mat-button *ngIf="porscheService.isUserSubmitted"
+          style="background: #191f22; color: white"
+          (click)="onSubmit()">Оформить</button>
+
+</mat-dialog-actions>
+

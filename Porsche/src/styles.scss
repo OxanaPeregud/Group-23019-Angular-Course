@@ -42,7 +42,6 @@ body{
 }
 
 
-
 @mixin zero-margin($pad-up-down, $pad-left-right){
   margin: 0 auto ;
   padding:$pad-up-down $pad-left-right;
@@ -51,6 +50,7 @@ body{
 .background-primary{
   background-color:$background-dark!important;
 }
+
 .background-accent{
   background-color:$accent-color!important;
 }
@@ -73,7 +73,9 @@ body{
 .form-size {
   width: 75%;
 }
-
+.field-space{
+  margin-right: 10px;
+}
 .highlight{
   border: 3px solid white;
   z-index: 2;

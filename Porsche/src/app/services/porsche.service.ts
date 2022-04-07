@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {baseURL} from "../shared/baseurl";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "../popup/popup.component";
+import {User} from "../shared/user";
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,18 @@ export class PorscheService {
   public porschesLink: string="porsches";
   public feedbackLink: string="feedback";
   public orderedPorsches: Porsche[]=[];
+  public usersLink: string = "users"
+  public user: User = new User();
+  public isUserSubmitted: boolean = false;
+  public ordersLink:string="orders"
 
   constructor(private http: HttpClient,
               private dialog: MatDialog) { }
+
+  public checkUsername():Observable<User>{
+    return this.http.get<User>(baseURL+this.usersLink+"?username="+this.user.username)
+      .pipe(map(user=>user))
+  }
 
   public getPorsches():Observable<Porsche[]>{
     return this.http.get<Porsche[]>(baseURL + this.porschesLink)
@@ -71,5 +81,9 @@ export class PorscheService {
         }
       }
     }
+  }
+  public getUser():Observable<User>{
+    return this.http.get<User>(baseURL+this.usersLink+"?username="+ this.user.username + "&password="+this.user.password)
+      .pipe(map(user=>user))
   }
 }

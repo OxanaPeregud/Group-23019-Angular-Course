@@ -4,34 +4,9 @@ import {AboutComponent} from "../about/about.component";
 import {MenuComponent} from "../menu/menu.component";
 import {ContactComponent} from "../contact/contact.component";
 import {PorscheDetailComponent} from "../porsche-detail/porsche-detail.component";
+import {PlaceOrderComponent} from "../place-order/place-order.component";
 
 export const routes: Routes = [
-  // {
-  //   path:'718',
-  //   component: HomeComponent
-  // },
-  // {
-  //   path:'911',
-  //   component: HomeComponent
-  // },
-  // {
-  //   path:'taycan',
-  //   component: HomeComponent
-  // },
-  // {
-  //   path:'panamera',
-  //   component: HomeComponent
-  // },
-  // {
-  //   path:'macan',
-  //   component: HomeComponent
-  // },
-  // {
-  //   path:'cayenne',
-  //   component: HomeComponent
-  // },
-  //Для них создать компоненты
-
   {
     path:'home',
     component: HomeComponent
@@ -51,6 +26,10 @@ export const routes: Routes = [
   {
     path:'contact',
     component: ContactComponent
+  },
+  {
+    path: 'order',
+    component: PlaceOrderComponent
   },
   {
     path:'',
