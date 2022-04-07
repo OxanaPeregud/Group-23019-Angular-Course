@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Porsche} from "../shared/porsche";
-import {PORSCHES} from "../shared/porsches";
 import {PorscheService} from "../services/porsche.service";
 import {flyIn} from "../animations/app.animations";
 

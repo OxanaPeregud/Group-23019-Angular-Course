@@ -18,7 +18,7 @@
         <p>{{porsche.description}}</p>
         <p>Engine: {{porsche.engine}}</p>
         <p>Color: {{porsche.color}}</p>
-        <p>Price: от {{porsche.price}}$</p>
+        <p>Price: от {{porsche.price}}</p>
         <p>Year of release: {{porsche.yearofrelease}}</p>
 <!--        <p>{{porsche.сarbody}}</p>-->
         <p>Body: {{porsche.body}}</p>
@@ -40,7 +40,7 @@
     </mat-card>
   </div>
 
-<app-spinner [hiddenData]="porsche"></app-spinner>
+<!--<app-spinner [hiddenData]="porsche"></app-spinner>-->
 
 
   <div fxFlex="70" *ngIf="porsche">
@@ -80,7 +80,8 @@
                       step="1"
                       min="0"
                       max="5"
-                      color="primary">
+                      color="primary"
+                      >
           </mat-slider>
 
           <mat-error style="font-size: small" *ngIf="commentFormErrors.rating">
@@ -99,7 +100,7 @@
           </mat-form-field>
         </p>
 
-        <button type="submit" mat-button class="background-primary text-floral-white"
+        <button type="submit" mat-button style="background: #191f22; color: white"
                 [disabled]="commentForm.invalid">Отправить
         </button>
 

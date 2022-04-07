@@ -1,34 +1,34 @@
-<mat-toolbar color="#eff0f1">
-  Ваш заказ/Вход/Регистрация
-  <span class="flex-spacer"></span>
-  <button mat-button mat-dialog-close="true">&times;</button>
-</mat-toolbar>
+<app-toolbar></app-toolbar>
 
-<form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
+<form novalidate #loginForm="ngForm" >
   <mat-dialog-content>
     <p>
-      <mat-form-field>
+      <mat-form-field class="field-space">
         <input matInput placeholder="Логин" type="text"
-               [(ngModel)]="user.username" name="username" class="active"
+               [(ngModel)]="porscheService.user.username" name="username" class="active"
                #usename="ngModel" required >
         <mat-error *ngIf="usename.errors">Введите логин</mat-error>
 
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Пароль" type="password"
-               [(ngModel)]="user.password" name="password"
+               [(ngModel)]="porscheService.user.password" name="password"
                #password="ngModel" required >
         <mat-error *ngIf="password.errors">Введите пароль</mat-error>
       </mat-form-field>
-    <p>
-      <mat-checkbox [(ngModel)]="user.remember" name="remember" color='primary'>Запомнить меня</mat-checkbox>
-    </p>
+
   </mat-dialog-content>
 </form>
 
 <mat-dialog-actions>
+  <button mat-button (click)="openSignUpForm()" >
+    <u style="font-size: medium">Регистрация</u></button>
   <span class="flex-spacer"></span>
   <button mat-button mat-dialog-close="true">Отменить</button>
   <button mat-button type="submit"
-          [disabled]="loginForm.form.invalid">Войти</button>
+          (click)="onSubmit()"
+          style="background: #191f22; color: white"
+          [disabled]="loginForm.form.invalid">Войти
+  </button>
+
 </mat-dialog-actions>
